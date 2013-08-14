@@ -12,11 +12,13 @@
                           <!-- CTA GTFS -->
                           <bean class="org.opentripplanner.graph_builder.model.GtfsBundle">
                               <property name="url" value="http://www.transitchicago.com/downloads/sch_data/google_transit.zip" />
+                              <property name="defaultAgencyId" value="CTA" />
                           </bean>
 
                           <!-- Metra GTFS -->
                           <bean class="org.opentripplanner.graph_builder.model.GtfsBundle">
                               <property name="url" value="http://www.gtfs-data-exchange.com/agency/metra/latest.zip" />
+                              <property name="defaultAgencyId" value="Metra" />
                           </bean> 
 
                       </list>

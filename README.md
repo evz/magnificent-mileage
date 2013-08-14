@@ -6,7 +6,7 @@ The idea is to make a free, Chicago-specific routing API for developers to build
 
 ### Usage
 
-#### [Web interface](ec2-54-227-63-227.compute-1.amazonaws.com/opentripplanner-webapp/)
+#### [Web interface](http://ec2-54-227-63-227.compute-1.amazonaws.com/opentripplanner-webapp/)
 
 [![Open Trip Planner Chicago](https://raw.github.com/evz/opentrip/master/screenshots/otpchicago-screenshot.png)](http://ec2-54-227-63-227.compute-1.amazonaws.com/opentripplanner-webapp/)
 

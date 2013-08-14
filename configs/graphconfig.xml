@@ -26,8 +26,9 @@
               </bean>
           </property>
       </bean>
+
+<!-- Build OSM from transit network (appears to not work easily with multiple GTFS sources, temporarily commented out)
   
-      <!-- Download OSM data, regions are specified as a radius around each transit stop -->
       <bean id="osmBuilder" class="org.opentripplanner.graph_builder.impl.osm.OpenStreetMapGraphBuilderImpl">
           <property name="provider">
               <bean class="org.opentripplanner.openstreetmap.impl.RegionBasedOpenStreetMapProviderImpl">
@@ -38,23 +39,45 @@
               </bean>
           </property>
       </bean>
-
-      <!-- This bean connects the OSM and transit data -->
+  
       <bean id="transitStreetLink" class="org.opentripplanner.graph_builder.impl.TransitToStreetNetworkGraphBuilderImpl" />
 
-      
+-->
   
-      <!-- Actually build the graph -->
       <bean id="graphBuilderTask" class="org.opentripplanner.graph_builder.GraphBuilderTask">
           <property name="path" value="/data/graph-bundle" />
           <property name="graphBuilders">
               <list>
                   <!-- GTFS comes before OSM, because we use the loaded set of stops to determine our OSM coverage -->
                   <ref bean="gtfsBuilder" />
+<!-- More functionality for the OSM-from-transit functionality
                   <ref bean="osmBuilder" />
                   <ref bean="transitStreetLink" />
+-->
+                  <bean class="org.opentripplanner.graph_builder.impl.osm.OpenStreetMapGraphBuilderImpl">
+                    <property name="provider">
+                        <!-- Use an OSM provider that will automatically download OSM data in a specified region -->
+                        <bean class="org.opentripplanner.openstreetmap.impl.RegionBasedOpenStreetMapProviderImpl">
+                            <property name="regionsSource">
+                                <!-- The region to collect OSM data from, currently set on a box around Chicago and suburbs -->
+                                <bean class="org.opentripplanner.openstreetmap.impl.FixedRegionSourceImpl">
+                                    <property name="latFrom" value="41.47231867751335" />
+                                    <property name="lonFrom" value="-88.45050210571289" />
+                                    <property name="latTo" value="42.34839305008159" />
+                                    <property name="lonTo" value="-87.31001998901367" />
+                                </bean>
+                            </property>
+                            <!-- Specify where downloaded OSM data will be cached -->
+                            <property name="cacheDirectory" value="/data/osm-cache" />
+                        </bean>
+                    </property>
+                    <property name="defaultWayPropertySetSource">
+                        <bean class="org.opentripplanner.graph_builder.impl.osm.DefaultWayPropertySetSource" />
+                    </property>
+                </bean>
               </list>
           </property>
       </bean>
   
   </beans>
+

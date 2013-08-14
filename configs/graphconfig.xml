@@ -9,15 +9,23 @@
               <bean id="gtfsBundles" class="org.opentripplanner.graph_builder.model.GtfsBundles">
                   <property name="bundles">
                       <list>
+                          <!-- CTA GTFS -->
                           <bean class="org.opentripplanner.graph_builder.model.GtfsBundle">
                               <property name="url" value="http://www.transitchicago.com/downloads/sch_data/google_transit.zip" />
                           </bean>
+
+                          <!-- Metra GTFS -->
+                          <bean class="org.opentripplanner.graph_builder.model.GtfsBundle">
+                              <property name="url" value="http://www.gtfs-data-exchange.com/agency/metra/latest.zip" />
+                          </bean> 
+
                       </list>
                   </property>
               </bean>
           </property>
       </bean>
   
+      <!-- Download OSM data, regions are specified as a radius around each transit stop -->
       <bean id="osmBuilder" class="org.opentripplanner.graph_builder.impl.osm.OpenStreetMapGraphBuilderImpl">
           <property name="provider">
               <bean class="org.opentripplanner.openstreetmap.impl.RegionBasedOpenStreetMapProviderImpl">
@@ -28,9 +36,13 @@
               </bean>
           </property>
       </bean>
-  
+
+      <!-- This bean connects the OSM and transit data -->
       <bean id="transitStreetLink" class="org.opentripplanner.graph_builder.impl.TransitToStreetNetworkGraphBuilderImpl" />
+
+      
   
+      <!-- Actually build the graph -->
       <bean id="graphBuilderTask" class="org.opentripplanner.graph_builder.GraphBuilderTask">
           <property name="path" value="/data/graph-bundle" />
           <property name="graphBuilders">

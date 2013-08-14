@@ -61,4 +61,19 @@
   <bean id="heuristicFactory" class="org.opentripplanner.routing.impl.DefaultRemainingWeightHeuristicFactoryImpl"/>
   <bean id="jsonpCallbackFilter" class="org.opentripplanner.jsonp.JsonpCallbackFilter" />
 
+  <bean id="periodicGraphUpdater" class="org.opentripplanner.api.servlet.PeriodicGraphUpdater">
+    <property name="updateFrequency" value="60000" />
+    <property name="updaters">
+        <list>
+            <bean class="org.opentripplanner.updater.bike_rental.BikeRentalUpdater">
+                <property name="bikeRentalDataSource">
+                    <bean class="org.opentripplanner.updater.bike_rental.DivvyBikeRentalDataSource">
+                        <property name="url" value="http://divvybikes.com/stations/json" />
+                    </bean>
+                </property>
+            </bean>
+         </list>
+     </property>
+  </bean>
+
 </beans>

@@ -37,3 +37,4 @@ gen-py/
 .idea/
 .sonar
 _site/
+*.DS_Store

@@ -1,16 +1,18 @@
-# Open Trip Planner - Chicago
+# Magnificent Mileage
 
-This is an [Open Trip Planner](https://github.com/openplans/OpenTripPlanner) instance for transit routing in the city of Chicago 
+### What is this?
 
-The idea is to make a free, Chicago-specific routing API for developers to build transit apps on top of.
+This is a copy of the [Open Trip Planner](https://github.com/openplans/OpenTripPlanner) patform. It is for transit routing in the city of Chicago.
 
-### Usage
+The idea is to make a free, Chicago-specific routing website and API for developers to build transit apps on top of.
 
-#### [Web interface](http://ec2-54-227-63-227.compute-1.amazonaws.com/opentripplanner-webapp/)
+#### [A website](http://ec2-54-227-63-227.compute-1.amazonaws.com/opentripplanner-webapp/)
 
 [![Open Trip Planner Chicago](https://raw.github.com/evz/opentrip/master/screenshots/otpchicago-screenshot.png)](http://ec2-54-227-63-227.compute-1.amazonaws.com/opentripplanner-webapp/)
 
-#### Example API call
+#### An API for transit routing
+
+Example API call
 ```bash
 curl --header "Accept: application/json" http://ec2-54-227-63-227.compute-1.amazonaws.com/opentripplanner-api-webapp/ws/plan \
 ?mode=TRANSIT%2CWALK \

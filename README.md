@@ -6,7 +6,9 @@ This is a copy of the [Open Trip Planner](https://github.com/openplans/OpenTripP
 
 The idea is to make a free, Chicago-specific routing website and API for developers to build transit apps on top of.
 
-#### [A website](http://ec2-54-227-63-227.compute-1.amazonaws.com/opentripplanner-webapp/)
+#### A website
+
+[magnificentmileage.org](http://magnificentmileage.org/)
 
 [![Open Trip Planner Chicago](https://raw.github.com/evz/opentrip/master/screenshots/otpchicago-screenshot.png)](http://ec2-54-227-63-227.compute-1.amazonaws.com/opentripplanner-webapp/)
 

@@ -118,7 +118,7 @@ otp.config_defaults = {
         // The default extent to zoom the map to when the web app loads.
         // This can either be an OpenLayers.Bounds object or the string "automatic"
         // If set to "automatic", the client will ask the server for the default extent.
-        defaultExtent: "automatic",
+        defaultExtent: new OpenLayers.Bounds(-87.96, 41.644, -87.40, 42.04),
 
         // These options are passed directly to the OpenLayers.Map constructor.
         options : {
